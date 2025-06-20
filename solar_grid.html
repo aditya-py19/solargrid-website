@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SolarGrid+ | Decentralized Energy Sharing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#10B981',
+                        secondary: '#3B82F6',
+                        dark: '#1F2937',
+                        light: '#F9FAFB',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(16,185,129,0.1) 0%, rgba(59,130,246,0.1) 100%);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .how-it-works-step {
+            position: relative;
+        }
+        
+        .how-it-works-step:not(:last-child):after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 60px;
+            background: linear-gradient(to bottom, #10B981, #3B82F6);
+        }
+        
+        @media (max-width: 768px) {
+            .how-it-works-step:not(:last-child):after {
+                display: none;
+            }
+        }
+        
+        .dashboard-card {
+            transition: all 0.3s ease;
+        }
+        
+        .dashboard-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .tech-tab {
+            transition: all 0.3s ease;
+        }
+        
+        .tech-tab:hover {
+            background-color: rgba(16, 185, 129, 0.1);
+        }
+        
+        .tech-tab.active {
+            background-color: rgba(16, 185, 129, 0.2);
+            border-left: 4px solid #10B981;
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-card {
+            transition: all 0.3s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <img class="h-12 w-auto" src="https://i.postimg.cc/3RkX2YRx/Screenshot-2025-06-20-025149.png" alt="SolarGrid+ Logo">
+                    </div>
+                    <div class="hidden md:ml-10 md:flex md:space-x-8">
+                        <a href="#home" class="text-primary border-primary inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                        <a href="#about" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium">About</a>
+                        <a href="#how-it-works" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium">How It Works</a>
+                        <a href="#features" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium">Features</a>
+                        <a href="#dashboard" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium">Dashboard</a>
+                        <a href="#technology" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium">Technology</a>
+                        <a href="#contact" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center">
+                    <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                        Get Started
+                    </button>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#home" class="bg-primary border-primary text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="#about" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">About</a>
+                <a href="#how-it-works" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">How It Works</a>
+                <a href="#features" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Features</a>
+                <a href="#dashboard" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Dashboard</a>
+                <a href="#technology" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Technology</a>
+                <a href="#contact" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact</a>
+            </div>
+            <div class="pt-4 pb-3 border-t border-gray-200">
+                <div class="mt-3 space-y-1">
+                    <button class="w-full flex justify-center items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+     <section id="home" class="relative pt-24 pb-12 md:pt-32 md:pb-20">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/026/675/224/small/ai-generated-ai-generative-solar-panel-at-grass-outdoor-nature-sunset-sun-landscape-alternative-eco-power-energy-electricity-graphic-art-photo.jpg" 
+             alt="Solar panels with sunset" 
+             class="w-full h-full object-cover opacity-80">
+        <div class="absolute inset-0 bg-black opacity-40"></div> <!-- Dark overlay -->
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+            <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-8 lg:text-left mx-auto">
+                <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl leading-tight">
+                    Power Your Neighborhood<br>
+                    <span class="text-green-400">With SolarGrid+</span>
+                </h1>
+                <p class="mt-4 text-lg text-gray-200 max-w-2xl">
+                    Decentralized, intelligent energy sharing powered by blockchain and AI technologies.
+                </p>
+                <div class="mt-8 flex flex-col sm:flex-row sm:justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#dashboard" class="w-full sm:w-auto flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600">
+                        Try Demo Dashboard
+                    </a>
+                    <a href="#how-it-works" class="w-full sm:w-auto flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 
+    <!-- Stats Section -->
+    <section class="bg-white py-12 sm:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Community Impact</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Empowering sustainable communities
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                    <div class="pt-6">
+                        <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full">
+                            <div class="-mt-6">
+                                <div>
+                                    <span class="inline-flex items-center justify-center p-3 bg-primary rounded-md shadow-lg">
+                                        <i class="fas fa-bolt text-white text-2xl"></i>
+                                    </span>
+                                </div>
+                                <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight counter" id="energy-shared">0</h3>
+                                <p class="mt-2 text-base text-gray-500">
+                                    MWh Energy Shared
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6">
+                        <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full">
+                            <div class="-mt-6">
+                                <div>
+                                    <span class="inline-flex items-center justify-center p-3 bg-secondary rounded-md shadow-lg">
+                                        <i class="fas fa-users text-white text-2xl"></i>
+                                    </span>
+                                </div>
+                                <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight counter" id="communities-impacted">0</h3>
+                                <p class="mt-2 text-base text-gray-500">
+                                    Communities Impacted
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6">
+                        <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full">
+                            <div class="-mt-6">
+                                <div>
+                                    <span class="inline-flex items-center justify-center p-3 bg-primary rounded-md shadow-lg">
+                                        <i class="fas fa-solar-panel text-white text-2xl"></i>
+                                    </span>
+                                </div>
+                                <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight counter" id="solar-installations">0</h3>
+                                <p class="mt-2 text-base text-gray-500">
+                                    Solar Installations
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6">
+                        <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full">
+                            <div class="-mt-6">
+                                <div>
+                                    <span class="inline-flex items-center justify-center p-3 bg-secondary rounded-md shadow-lg">
+                                        <i class="fas fa-leaf text-white text-2xl"></i>
+                                    </span>
+                                </div>
+                                <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight counter" id="carbon-reduced">0</h3>
+                                <p class="mt-2 text-base text-gray-500">
+                                    Tons CO₂ Reduced
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-12 sm:py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">About Us</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Revolutionizing energy distribution
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    SolarGrid+ is transforming how communities generate, share, and consume renewable energy.
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
+                    <div class="relative">
+                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+                            <i class="fas fa-question-circle text-xl"></i>
+                        </div>
+                        <p class="ml-16 text-lg leading-6 font-medium text-gray-900">The Problem</p>
+                        <p class="mt-2 ml-16 text-base text-gray-500">
+                            Traditional energy grids are inefficient, centralized, and rely heavily on fossil fuels. 
+                            Many communities lack access to affordable renewable energy solutions, and excess solar 
+                            energy often goes to waste when it could benefit neighbors.
+                        </p>
+                    </div>
+
+                    <div class="relative">
+                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+                            <i class="fas fa-lightbulb text-xl"></i>
+                        </div>
+                        <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Our Solution</p>
+                        <p class="mt-2 ml-16 text-base text-gray-500">
+                            SolarGrid+ creates a decentralized energy sharing platform where homeowners with solar panels 
+                            can sell excess energy directly to neighbors using blockchain technology. Our AI algorithms 
+                            optimize energy routing and pricing in real-time for maximum efficiency and fairness.
+                        </p>
+                    </div>
+
+                    <div class="relative">
+                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+                            <i class="fas fa-bullseye text-xl"></i>
+                        </div>
+                        <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Our Mission</p>
+                        <p class="mt-2 ml-16 text-base text-gray-500">
+                            To democratize access to clean energy, reduce carbon emissions, and create resilient 
+                            communities through decentralized energy sharing. We believe in a future where energy 
+                            is clean, affordable, and controlled by the people who use it.
+                        </p>
+                    </div>
+
+                    <div class="relative">
+                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+                            <i class="fas fa-project-diagram text-xl"></i>
+                        </div>
+                        <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Technology Stack</p>
+                        <p class="mt-2 ml-16 text-base text-gray-500">
+                            Blockchain for secure transactions, AI for dynamic routing and pricing, IoT for real-time 
+                            monitoring, and cloud computing for scalable infrastructure. Our platform integrates with 
+                            existing smart meters and solar inverters.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Section -->
+            <div class="mt-20">
+                <h2 class="text-2xl font-extrabold text-gray-900 sm:text-3xl text-center">
+                    Meet Our Team
+                </h2>
+                <div class="mt-12 grid gap-12 md:grid-cols-3 lg:grid-cols-4">
+                    <div class="text-center">
+                        <img class="mx-auto h-32 w-32 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80" alt="Sarah Johnson">
+                        <h3 class="mt-6 text-lg font-medium text-gray-900">Sarah Johnson</h3>
+                        <p class="mt-1 text-sm text-gray-500">CEO & Founder</p>
+                        <div class="mt-4 flex justify-center space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <img class="mx-auto h-32 w-32 rounded-full" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80" alt="Michael Chen">
+                        <h3 class="mt-6 text-lg font-medium text-gray-900">Michael Chen</h3>
+                        <p class="mt-1 text-sm text-gray-500">CTO</p>
+                        <div class="mt-4 flex justify-center space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <img class="mx-auto h-32 w-32 rounded-full" src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80" alt="David Rodriguez">
+                        <h3 class="mt-6 text-lg font-medium text-gray-900">David Rodriguez</h3>
+                        <p class="mt-1 text-sm text-gray-500">Blockchain Lead</p>
+                        <div class="mt-4 flex justify-center space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <img class="mx-auto h-32 w-32 rounded-full" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80" alt="Priya Patel">
+                        <h3 class="mt-6 text-lg font-medium text-gray-900">Priya Patel</h3>
+                        <p class="mt-1 text-sm text-gray-500">AI/ML Engineer</p>
+                        <div class="mt-4 flex justify-center space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-12 sm:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Process</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    How SolarGrid+ Works
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    A simple, transparent process for decentralized energy sharing
+                </p>
+            </div>
+
+            <div class="mt-16">
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+                    <div class="how-it-works-step pt-6">
+                        <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full card-hover transition-all duration-300">
+                            <div class="-mt-6">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mx-auto">
+                                    <span class="text-xl font-bold">1</span>
+                                </div>
+                                <h3 class="mt-8 text-lg font-medium text-gray-900 text-center">Solar Energy Generation</h3>
+                                <p class="mt-5 text-base text-gray-500">
+                                    Homeowners install solar panels on their rooftops. Our system automatically connects 
+                                    to your existing solar inverter to monitor energy production in real-time.
+                                </p>
+                                <div class="mt-6 flex justify-center">
+                                    <div class="flex-shrink-0 flex items-center justify-center h-16 w-16 rounded-full bg-primary bg-opacity-10">
+                                        <i class="fas fa-solar-panel text-primary text-2xl"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="how-it-works-step pt-6">
+                        <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full card-hover transition-all duration-300">
+                            <div class="-mt-6">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mx-auto">
+                                    <span class="text-xl font-bold">2</span>
+                                </div>
+                                <h3 class="mt-8 text-lg font-medium text-gray-900 text-center">AI-Powered Optimization</h3>
+                                <p class="mt-5 text-base text-gray-500">
+                                    Our machine learning algorithms analyze energy production, consumption patterns, 
+                                    and market conditions to determine optimal pricing and routing for your excess energy.
+                                </p>
+                                <div class="mt-6 flex justify-center">
+                                    <div class="flex-shrink-0 flex items-center justify-center h-16 w-16 rounded-full bg-primary bg-opacity-10">
+                                        <i class="fas fa-brain text-primary text-2xl"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="how-it-works-step pt-6">
+                        <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full card-hover transition-all duration-300">
+                            <div class="-mt-6">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mx-auto">
+                                    <span class="text-xl font-bold">3</span>
+                                </div>
+                                <h3 class="mt-8 text-lg font-medium text-gray-900 text-center">P2P Energy Trading</h3>
+                                <p class="mt-5 text-base text-gray-500">
+                                    Excess energy is automatically offered to neighbors through our blockchain-based 
+                                    marketplace. Transactions are recorded securely on the blockchain with smart contracts.
+                                </p>
+                                <div class="mt-6 flex justify-center">
+                                    <div class="flex-shrink-0 flex items-center justify-center h-16 w-16 rounded-full bg-primary bg-opacity-10">
+                                        <i class="fas fa-exchange-alt text-primary text-2xl"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="how-it-works-step pt-6">
+                        <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full card-hover transition-all duration-300">
+                            <div class="-mt-6">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mx-auto">
+                                    <span class="text-xl font-bold">4</span>
+                                </div>
+                                <h3 class="mt-8 text-lg font-medium text-gray-900 text-center">Real-Time Monitoring</h3>
+                                <p class="mt-5 text-base text-gray-500">
+                                    Track your energy production, consumption, sales, and earnings through our intuitive 
+                                    dashboard. Get alerts and recommendations to optimize your system's performance.
+                                </p>
+                                <div class="mt-6 flex justify-center">
+                                    <div class="flex-shrink-0 flex items-center justify-center h-16 w-16 rounded-full bg-primary bg-opacity-10">
+                                        <i class="fas fa-chart-line text-primary text-2xl"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="how-it-works-step pt-6">
+                        <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full card-hover transition-all duration-300">
+                            <div class="-mt-6">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mx-auto">
+                                    <span class="text-xl font-bold">5</span>
+                                </div>
+                                <h3 class="mt-8 text-lg font-medium text-gray-900 text-center">Automated Payments</h3>
+                                <p class="mt-5 text-base text-gray-500">
+                                    Receive payments automatically through our integrated payment system. All transactions 
+                                    are settled in your local currency or cryptocurrency of choice.
+                                </p>
+                                <div class="mt-6 flex justify-center">
+                                    <div class="flex-shrink-0 flex items-center justify-center h-16 w-16 rounded-full bg-primary bg-opacity-10">
+                                        <i class="fas fa-money-bill-wave text-primary text-2xl"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="how-it-works-step pt-6">
+                        <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full card-hover transition-all duration-300">
+                            <div class="-mt-6">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mx-auto">
+                                    <span class="text-xl font-bold">6</span>
+                                </div>
+                                <h3 class="mt-8 text-lg font-medium text-gray-900 text-center">Community Impact</h3>
+                                <p class="mt-5 text-base text-gray-500">
+                                    See the collective impact of your community's energy sharing. Track carbon emissions 
+                                    reduced and energy independence achieved through our sustainability dashboard.
+                                </p>
+                                <div class="mt-6 flex justify-center">
+                                    <div class="flex-shrink-0 flex items-center justify-center h-16 w-16 rounded-full bg-primary bg-opacity-10">
+                                        <i class="fas fa-globe-americas text-primary text-2xl"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16">
+                <div class="bg-primary rounded-lg shadow-xl overflow-hidden">
+                    <div class="px-6 py-8 sm:p-10 sm:pb-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-primary-light rounded-md p-3">
+                                <i class="fas fa-play-circle text-white text-3xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-2xl font-extrabold text-white">See SolarGrid+ in Action</h3>
+                                <p class="mt-1 text-primary-lighter">Watch our 2-minute explainer video</p>
+                            </div>
+                            </div>
+                            <div class="mt-8 aspect-w-16 aspect-h-9">
+                                <iframe class="w-full h-full rounded-lg" 
+                                        src="https://www.youtube.com/embed/7fwZuu-m-30" 
+                                        title="SolarGrid+ Explanation Video" frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                </iframe>
+                            </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-12 sm:py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Features</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Powerful Tools for Energy Producers
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Everything you need to maximize your solar investment and contribute to a sustainable future
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
+                    <div class="relative bg-white p-6 rounded-lg shadow-sm card-hover">
+                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+                            <i class="fas fa-route text-xl"></i>
+                        </div>
+                        <p class="ml-16 text-lg leading-6 font-medium text-gray-900">AI Dynamic Routing</p>
+                        <p class="mt-2 ml-16 text-base text-gray-500">
+                            Our advanced algorithms continuously analyze grid conditions, weather forecasts, and consumption 
+                            patterns to route your energy where it's needed most, maximizing efficiency and earnings.
+                        </p>
+                    </div>
+
+                    <div class="relative bg-white p-6 rounded-lg shadow-sm card-hover">
+                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+                            <i class="fas fa-shield-alt text-xl"></i>
+                        </div>
+                        <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Blockchain Security</p>
+                        <p class="mt-2 ml-16 text-base text-gray-500">
+                            All transactions are recorded on an immutable blockchain ledger with smart contracts that 
+                            automatically execute when conditions are met, ensuring transparency and eliminating disputes.
+                        </p>
+                    </div>
+
+                    <div class="relative bg-white p-6 rounded-lg shadow-sm card-hover">
+                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+                            <i class="fas fa-chart-bar text-xl"></i>
+                        </div>
+                        <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Real-time Analytics</p>
+                        <p class="mt-2 ml-16 text-base text-gray-500">
+                            Comprehensive dashboards show your energy production, consumption, sales history, and earnings 
+                            with drill-down capabilities for any time period.
+                        </p>
+                    </div>
+
+                    <div class="relative bg-white p-6 rounded-lg shadow-sm card-hover">
+                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+                            <i class="fas fa-bell text-xl"></i>
+                        </div>
+                        <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Smart Alerts</p>
+                        <p class="mt-2 ml-16 text-base text-gray-500">
+                            Receive notifications for optimal selling times, system maintenance needs, or unusual activity 
+                            patterns via email, SMS, or mobile app push notifications.
+                        </p>
+                    </div>
+
+                    <div class="relative bg-white p-6 rounded-lg shadow-sm card-hover">
+                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+                            <i class="fas fa-robot text-xl"></i>
+                        </div>
+                        <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Automated Trading</p>
+                        <p class="mt-2 ml-16 text-base text-gray-500">
+                            Set your preferences once and let our system handle the rest. Choose between maximum earnings, 
+                            maximum community impact, or a balanced approach.
+                        </p>
+                    </div>
+
+                    <div class="relative bg-white p-6 rounded-lg shadow-sm card-hover">
+                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+                            <i class="fas fa-users text-xl"></i>
+                        </div>
+                        <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Community Features</p>
+                        <p class="mt-2 ml-16 text-base text-gray-500">
+                            Join or create energy cooperatives, participate in group purchases of solar equipment, and 
+                            collaborate with neighbors to build microgrids for increased resilience.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Demo Section -->
+    <section id="dashboard" class="py-12 sm:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Dashboard</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Your Energy Control Center
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Monitor, manage, and optimize your solar energy system from anywhere
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <!-- Dashboard Tabs -->
+                <div class="border-b border-gray-200">
+                    <nav class="-mb-px flex space-x-8" id="dashboard-tabs">
+                        <button class="dashboard-tab whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-primary text-primary" data-tab="overview">
+                            Overview
+                        </button>
+                        <button class="dashboard-tab whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="production">
+                            Energy Production
+                        </button>
+                        <button class="dashboard-tab whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="trading">
+                            Energy Trading
+                        </button>
+                        <button class="dashboard-tab whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="earnings">
+                            Earnings
+                        </button>
+                        <button class="dashboard-tab whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="impact">
+                            Environmental Impact
+                        </button>
+                    </nav>
+                </div>
+
+                <!-- Dashboard Content -->
+                <div class="mt-8">
+                    <!-- Overview Tab -->
+                    <div class="dashboard-content" id="overview-content">
+                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                            <div class="bg-white overflow-hidden shadow rounded-lg dashboard-card">
+                                <div class="px-4 py-5 sm:p-6">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 bg-primary bg-opacity-10 rounded-md p-3">
+                                            <i class="fas fa-solar-panel text-primary text-2xl"></i>
+                                        </div>
+                                        <div class="ml-5 w-0 flex-1">
+                                            <dl>
+                                                <dt class="text-sm font-medium text-gray-500 truncate">
+                                                    Current Production
+                                                </dt>
+                                                <dd>
+                                                    <div class="text-lg font-medium text-gray-900">
+                                                        3.2 <span class="text-sm text-gray-500">kW</span>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                            <div class="h-2 bg-primary rounded-full" style="width: 65%"></div>
+                                        </div>
+                                        <p class="mt-1 text-xs text-gray-500">65% of capacity</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white overflow-hidden shadow rounded-lg dashboard-card">
+                                <div class="px-4 py-5 sm:p-6">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 bg-primary bg-opacity-10 rounded-md p-3">
+                                            <i class="fas fa-bolt text-primary text-2xl"></i>
+                                        </div>
+                                        <div class="ml-5 w-0 flex-1">
+                                            <dl>
+                                                <dt class="text-sm font-medium text-gray-500 truncate">
+                                                    Energy Sold Today
+                                                </dt>
+                                                <dd>
+                                                    <div class="text-lg font-medium text-gray-900">
+                                                        8.7 <span class="text-sm text-gray-500">kWh</span>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                            <div class="h-2 bg-primary rounded-full" style="width: 45%"></div>
+                                        </div>
+                                        <p class="mt-1 text-xs text-gray-500">45% of production</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white overflow-hidden shadow rounded-lg dashboard-card">
+                                <div class="px-4 py-5 sm:p-6">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 bg-primary bg-opacity-10 rounded-md p-3">
+                                            <i class="fas fa-dollar-sign text-primary text-2xl"></i>
+                                        </div>
+                                        <div class="ml-5 w-0 flex-1">
+                                            <dl>
+                                                <dt class="text-sm font-medium text-gray-500 truncate">
+                                                    Earnings Today
+                                                </dt>
+                                                <dd>
+                                                    <div class="text-lg font-medium text-gray-900">
+                                                        $2.18
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                            <div class="h-2 bg-primary rounded-full" style="width: 30%"></div>
+                                        </div>
+                                        <p class="mt-1 text-xs text-gray-500">30% of daily average</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white overflow-hidden shadow rounded-lg dashboard-card">
+                                <div class="px-4 py-5 sm:p-6">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 bg-primary bg-opacity-10 rounded-md p-3">
+                                            <i class="fas fa-leaf text-primary text-2xl"></i>
+                                        </div>
+                                        <div class="ml-5 w-0 flex-1">
+                                            <dl>
+                                                <dt class="text-sm font-medium text-gray-500 truncate">
+                                                    CO₂ Reduced
+                                                </dt>
+                                                <dd>
+                                                    <div class="text-lg font-medium text-gray-900">
+                                                        12.4 <span class="text-sm text-gray-500">kg</span>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                            <div class="h-2 bg-primary rounded-full" style="width: 55%"></div>
+                                        </div>
+                                        <p class="mt-1 text-xs text-gray-500">55% of daily average</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+                            <div class="bg-white overflow-hidden shadow rounded-lg">
+                                <div class="px-4 py-5 sm:p-6">
+                                    <h3 class="text-lg font-medium text-gray-900">Energy Flow</h3>
+                                    <div class="mt-4">
+                                        <div class="relative h-64">
+                                            <div class="absolute inset-0 flex items-center justify-center">
+                                                <div class="w-48 h-48 rounded-full border-8 border-gray-200 flex items-center justify-center">
+                                                    <div class="w-32 h-32 rounded-full border-8 border-primary border-opacity-30 flex items-center justify-center">
+                                                        <div class="w-20 h-20 rounded-full bg-primary bg-opacity-10 flex items-center justify-center">
+                                                            <i class="fas fa-home text-primary text-2xl"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md">
+                                                <div class="w-12 h-12 rounded-full bg-primary bg-opacity-10 flex items-center justify-center">
+                                                    <i class="fas fa-sun text-primary text-xl"></i>
+                                                </div>
+                                            </div>
+                                            <div class="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md">
+                                                <div class="w-12 h-12 rounded-full bg-primary bg-opacity-10 flex items-center justify-center">
+                                                    <i class="fas fa-plug text-primary text-xl"></i>
+                                                </div>
+                                            </div>
+                                            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-white p-2 rounded-full shadow-md">
+                                                <div class="w-12 h-12 rounded-full bg-primary bg-opacity-10 flex items-center justify-center">
+                                                    <i class="fas fa-battery-three-quarters text-primary text-xl"></i>
+                                                </div>
+                                            </div>
+                                            <div class="absolute top-1/2 left-0 transform -translate-x-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md">
+                                                <div class="w-12 h-12 rounded-full bg-primary bg-opacity-10 flex items-center justify-center">
+                                                    <i class="fas fa-exchange-alt text-primary text-xl"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-8 grid grid-cols-4 gap-4 text-center">
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-500">Solar Production</p>
+                                                <p class="mt-1 text-sm text-gray-900">3.2 kW</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-500">Home Usage</p>
+                                                <p class="mt-1 text-sm text-gray-900">1.7 kW</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-500">Battery Storage</p>
+                                                <p class="mt-1 text-sm text-gray-900">0.8 kW</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-500">Grid Export</p>
+                                                <p class="mt-1 text-sm text-gray-900">0.7 kW</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white overflow-hidden shadow rounded-lg">
+                                <div class="px-4 py-5 sm:p-6">
+                                    <h3 class="text-lg font-medium text-gray-900">Recent Transactions</h3>
+                                    <div class="mt-4">
+                                        <div class="overflow-hidden">
+                                            <table class="min-w-full divide-y divide-gray-200">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                                                        <th scope="col" class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                                                        <th scope="col" class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+                                                        <th scope="col" class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Recipient</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    <tr>
+                                                        <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">10:24 AM</td>
+                                                        <td class="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-900">1.2 kWh</td>
+                                                        <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">$0.28</td>
+                                                        <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">Neighbor A</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">09:47 AM</td>
+                                                        <td class="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-900">0.8 kWh</td>
+                                                        <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">$0.19</td>
+                                                        <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">Neighbor B</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">08:12 AM</td>
+                                                        <td class="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-900">2.1 kWh</td>
+                                                        <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">$0.52</td>
+                                                        <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">Local School</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">07:35 AM</td>
+                                                        <td class="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-900">1.5 kWh</td>
+                                                        <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">$0.36</td>
+                                                        <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-500">Neighbor C</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="mt-4">
+                                            <button class="w-full flex items-center justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                                View All Transactions
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Production Tab (hidden by default) -->
+                    <div class="dashboard-content hidden" id="production-content">
+                        <div class="bg-white overflow-hidden shadow rounded-lg">
+                            <div class="px-4 py-5 sm:p-6">
+                                <h3 class="text-lg font-medium text-gray-900">Energy Production</h3>
+                                <div class="mt-4">
+                                    <div class="h-64 bg-gray-100 rounded-lg flex items-center justify-center">
+                                        <p class="text-gray-500">Energy production chart would be displayed here</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trading Tab (hidden by default) -->
+                    <div class="dashboard-content hidden" id="trading-content">
+                        <div class="bg-white overflow-hidden shadow rounded-lg">
+                            <div class="px-4 py-5 sm:p-6">
+                                <h3 class="text-lg font-medium text-gray-900">Energy Trading</h3>
+                                <div class="mt-4">
+                                    <div class="h-64 bg-gray-100 rounded-lg flex items-center justify-center">
+                                        <p class="text-gray-500">Energy trading chart would be displayed here</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Earnings Tab (hidden by default) -->
+                    <div class="dashboard-content hidden" id="earnings-content">
+                        <div class="bg-white overflow-hidden shadow rounded-lg">
+                            <div class="px-4 py-5 sm:p-6">
+                                <h3 class="text-lg font-medium text-gray-900">Earnings</h3>
+                                <div class="mt-4">
+                                    <div class="h-64 bg-gray-100 rounded-lg flex items-center justify-center">
+                                        <p class="text-gray-500">Earnings chart would be displayed here</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Impact Tab (hidden by default) -->
+                    <div class="dashboard-content hidden" id="impact-content">
+                        <div class="bg-white overflow-hidden shadow rounded-lg">
+                            <div class="px-4 py-5 sm:p-6">
+                                <h3 class="text-lg font-medium text-gray-900">Environmental Impact</h3>
+                                <div class="mt-4">
+                                    <div class="h-64 bg-gray-100 rounded-lg flex items-center justify-center">
+                                        <p class="text-gray-500">Environmental impact chart would be displayed here</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section id="technology" class="py-12 sm:py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Technology</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Our Cutting-Edge Stack
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Combining the latest technologies to build the energy grid of the future
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="flex flex-col md:flex-row">
+                    <!-- Tech Tabs -->
+                    <div class="w-full md:w-1/4">
+                        <div class="space-y-1">
+                            <button class="w-full text-left px-4 py-3 text-sm font-medium text-gray-900 bg-white rounded-md tech-tab active" data-tech="ai">
+                                <div class="flex items-center">
+                                    <i class="fas fa-brain text-primary mr-3"></i>
+                                    <span>AI & Machine Learning</span>
+                                </div>
+                            </button>
+                            <button class="w-full text-left px-4 py-3 text-sm font-medium text-gray-900 bg-white rounded-md tech-tab" data-tech="blockchain">
+                                <div class="flex items-center">
+                                    <i class="fas fa-link text-primary mr-3"></i>
+                                    <span>Blockchain</span>
+                                </div>
+                            </button>
+                            <button class="w-full text-left px-4 py-3 text-sm font-medium text-gray-900 bg-white rounded-md tech-tab" data-tech="iot">
+                                <div class="flex items-center">
+                                    <i class="fas fa-wifi text-primary mr-3"></i>
+                                    <span>IoT Integration</span>
+                                </div>
+                            </button>
+                            <button class="w-full text-left px-4 py-3 text-sm font-medium text-gray-900 bg-white rounded-md tech-tab" data-tech="cloud">
+                                <div class="flex items-center">
+                                    <i class="fas fa-cloud text-primary mr-3"></i>
+                                    <span>Cloud Infrastructure</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Tech Content -->
+                    <div class="w-full md:w-3/4 md:pl-8 mt-6 md:mt-0">
+                        <!-- AI Content -->
+                        <div class="tech-content" id="ai-content">
+                            <div class="bg-white p-6 rounded-lg shadow-sm">
+                                <h3 class="text-xl font-bold text-gray-900">AI & Machine Learning</h3>
+                                <p class="mt-4 text-gray-600">
+                                    Our proprietary AI algorithms analyze vast amounts of data to optimize energy distribution, predict demand patterns, and set fair market prices in real-time.
+                                </p>
+                                <div class="mt-6">
+                                    <h4 class="text-lg font-medium text-gray-900">Key Features:</h4>
+                                    <ul class="mt-2 space-y-2">
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 h-5 w-5 text-primary">
+                                                <i class="fas fa-check-circle"></i>
+                                            </div>
+                                            <p class="ml-2 text-sm text-gray-600">Demand forecasting with 95% accuracy</p>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 h-5 w-5 text-primary">
+                                                <i class="fas fa-check-circle"></i>
+                                            </div>
+                                            <p class="ml-2 text-sm text-gray-600">Dynamic pricing based on real-time conditions</p>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 h-5 w-5 text-primary">
+                                                <i class="fas fa-check-circle"></i>
+                                            </div>
+                                            <p class="ml-2 text-sm text-gray-600">Optimal energy routing algorithms</p>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 h-5 w-5 text-primary">
+                                                <i class="fas fa-check-circle"></i>
+                                            </div>
+                                            <p class="ml-2 text-sm text-gray-600">Anomaly detection for system health</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="mt-6">
+                                    <div class="h-48 bg-gray-100 rounded-lg flex items-center justify-center">
+                                        <p class="text-gray-500">AI visualization would be displayed here</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Blockchain Content (hidden by default) -->
+                        <div class="tech-content hidden" id="blockchain-content">
+                            <div class="bg-white p-6 rounded-lg shadow-sm">
+                                <h3 class="text-xl font-bold text-gray-900">Blockchain Technology</h3>
+                                <p class="mt-4 text-gray-600">
+                                    We leverage blockchain to create a transparent, secure, and tamper-proof ledger for all energy transactions. Smart contracts automate payments and enforce agreements.
+                                </p>
+                                <div class="mt-6">
+                                    <h4 class="text-lg font-medium text-gray-900">Key Features:</h4>
+                                    <ul class="mt-2 space-y-2">
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 h-5 w-5 text-primary">
+                                                <i class="fas fa-check-circle"></i>
+                                            </div>
+                                            <p class="ml-2 text-sm text-gray-600">Immutable transaction records</p>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 h-5 w-5 text-primary">
+                                                <i class="fas fa-check-circle"></i>
+                                            </div>
+                                            <p class="ml-2 text-sm text-gray-600">Automated smart contracts</p>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 h-5 w-5 text-primary">
+                                                <i class="fas fa-check-circle"></i>
+                                            </div>
+                                            <p class="ml-2 text-sm text-gray-600">Decentralized governance</p>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 h-5 w-5 text-primary">
+                                                <i class="fas fa-check-circle"></i>
+                                            </div>
+                                            <p class="ml-2 text-sm text-gray-600">Cryptographic security</p>
+                                        </li>
+                                    </ul>
+                                </div>
+ <!-- Contact Section -->
+<!-- Contact Section (Dummy) -->
+<section id="contact" class="bg-gray-100 py-12 sm:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-extrabold text-gray-900">Contact Us</h2>
+        <p class="mt-4 text-lg text-gray-600">
+            We're here to help! Reach out to us with any questions or feedback.
+        </p>
+        <form class="mt-8 space-y-6">
+            <div>
+                <input type="text" name="name" id="name" placeholder="Your Name" 
+                    class="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary" required>
+            </div>
+            <div>
+                <input type="email" name="email" id="email" placeholder="Your Email" 
+                    class="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary" required>
+            </div>
+            <div>
+                <textarea name="message" id="message" rows="4" placeholder="Your Message"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary" required></textarea>
+            </div>
+            <div>
+                <button type="submit" class="w-full bg-primary text-white py-3 px-6 rounded-md hover:bg-green-600">
+                    Send Message
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+<!-- Footer (if any) -->
+<footer class="bg-white py-4 text-center text-gray-500 text-sm">
+    &copy; 2025 SolarGrid+. All rights reserved.
+</footer>
